@@ -16,6 +16,7 @@ import shutil
 import shlex
 import os
 from functools import reduce
+from google.protobuf import message_factory
 
 # Python-protobuf breaks easily with protoc version differences if
 # using the cpp or upb implementation. Force it to use pure Python
@@ -1616,7 +1617,7 @@ class Message(ProtoElement):
         optional_only.name += str(id(self))
 
         desc = google.protobuf.descriptor.MakeDescriptor(optional_only)
-        msg = reflection.MakeClass(desc)()
+        msg = message_factory.GetMessageClass(desc)()
 
         for field in optional_only.field:
             if field.type == FieldD.TYPE_STRING:

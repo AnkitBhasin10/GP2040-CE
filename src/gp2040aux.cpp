@@ -5,6 +5,7 @@
 #include "drivermanager.h"
 #include "storagemanager.h"
 #include "usbhostmanager.h"
+#include "uac1_speaker.h"
 
 #include "addons/board_led.h"  // Add-Ons
 #include "addons/buzzerspeaker.h"
@@ -52,6 +53,7 @@ void GP2040Aux::setup() {
 
 void GP2040Aux::run() {
 	while (1) {
+		uac1_speaker_core1_poll();  // UAC1 sound card: starts I2S on this core when requested
 		// Pre, Process, and Post
 		addons.PreprocessAddons();
 		addons.ProcessAddons();

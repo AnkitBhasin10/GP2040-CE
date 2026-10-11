@@ -58,6 +58,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
+include(pico_extras_import.cmake)
 
 if (PICO_SDK_VERSION_STRING VERSION_LESS "2.3.1")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 2.3.1 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
@@ -264,6 +265,7 @@ src/peripheralmanager.cpp
 src/storagemanager.cpp
 src/system.cpp
 src/usbdriver.cpp
+src/uac1_speaker.cpp
 src/usbhostmanager.cpp
 src/config_legacy.cpp
 src/config_utils.cpp
@@ -345,6 +347,7 @@ WiiExtension
 SNESpad
 pico_mbedtls
 nanopb
+pico_audio_i2s
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
